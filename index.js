@@ -1,6 +1,8 @@
 import express from "express"
+import { exercicio1Get, exercicio1Post } from "./service/exercicio.js";
 
 const app = express();  //inicalizando api through express
+app.use(express.json())
 
 app.get("/api/pessoa/:id", (req, res) => {
     const nome = req.query.nome;
@@ -11,7 +13,8 @@ app.listen(3000, () => {
     console.log("Servidor rodando na porta 3000");
 })
 
-app.get("/exercicio1/:num1/:num2", exercicio1())
+app.get("/exercicio1", exercicio1Get)
+app.post("/exercicio1", exercicio1Post)
 
 app.get("/exercicio2/:dinheiro/:horas", (req,res) => {
     const horasTrabalhadas = req.params.horas;
