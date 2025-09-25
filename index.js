@@ -1,52 +1,30 @@
 import express from "express"
-import { exercicio1Get, exercicio1Post } from "./service/exercicio.js";
+import { exercicio1Get, exercicio1Post, exercicio2Get, exercicio2Post, exercicio3Get, exercicio3Post, exercicio4Get, exercicio4Post, exercicio5Get, exercicio5Post, exercicio6Get, exercicio6Post, exercicio7Get, exercicio7Post } from "./service/exercicios.js";
 
 const app = express();  //inicalizando api through express
 app.use(express.json())
-
-app.get("/api/pessoa/:id", (req, res) => {
-    const nome = req.query.nome;
-    res.status(200).send("Hello " + nome);
-});
 
 app.listen(3000, () => {
     console.log("Servidor rodando na porta 3000");
 })
 
-app.get("/exercicio1", exercicio1Get)
+app.get("/exercicio1/:num1/:num2", exercicio1Get)
 app.post("/exercicio1", exercicio1Post)
 
-app.get("/exercicio2/:dinheiro/:horas", (req,res) => {
-    const horasTrabalhadas = req.params.horas;
-    const salarioHora = req.params.dinheiro;
+app.get("/exercicio2/:dinheiro/:horas", exercicio2Get)
+app.post("/exercicio2", exercicio2Post)
 
-    res.status(200).send("salario por hora: " + salarioHora + ", horas trabalhadas: " + horasTrabalhadas + " = " + (salarioHora * horasTrabalhadas) + " de salário mensal" )
-})
+app.get("/exercicio3/:pessoa1/:pessoa2/:pessoa3/:pessoa4/:pessoa5", exercicio3Get)
+app.post("/exercicio3", exercicio3Post)
 
-app.get("/exercicio3/:pessoa1/:pessoa2/:pessoa3/:pessoa4/:pessoa5", (req, res) => {
-    const pessoa1 = parseInt(req.params.pessoa1);
-    const pessoa2 = parseInt(req.params.pessoa2);
-    const pessoa3 = parseInt(req.params.pessoa3);
-    const pessoa4 = parseInt(req.params.pessoa4);
-    const pessoa5 = parseInt(req.params.pessoa5);
+app.get("/exercicio4/:celsius", exercicio4Get)
+app.post("/exercicio4", exercicio4Post)
 
-    res.status(200).send("pessoa 1: " + pessoa1 + ", pessoa 2: " + pessoa2 +", pessoa 3: " + pessoa3 +", pessoa 4: " + pessoa4 +", pessoa 5: " + pessoa5 + " = média: " + ((pessoa1 + pessoa1 + pessoa1 + pessoa1 + pessoa1) / 5))
-})
+app.get("/exercicio5/:milhas", exercicio5Get)
+app.post("/exercicio5", exercicio5Post)
 
-app.get("/exercicio4/:celsius", (req,res) => {
-    const celsius = parseFloat(req.params.celsius);
+app.get("/exercicio6/:duracao", exercicio6Get)
+app.post("/exercicio6", exercicio6Post)
 
-    res.status(200).send("Temperatura em Celsius: " + celsius + "C°" + " = " + ((9 * celsius + 160) / 5) + " Fahrenheit")
-})
-
-app.get("/exercicio5/:milhas", (req,res) => {
-    const milhas = parseFloat(req.params.milhas);
-
-    res.status(200).send(milhas + " milhas são " + (milhas + 1.60934) + " kilometros")
-})
-
-app.get("/exercicio6/:duracao", (req, res) => {
-    const duracao = req.params.duracao;
-
-    res.status(200).send()
-})
+app.get("/exercicio7/:km", exercicio7Get)
+app.post("/exercicio7", exercicio7Post)
