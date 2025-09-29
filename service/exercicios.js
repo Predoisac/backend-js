@@ -6,8 +6,8 @@ export const exercicio1Get = (req, res) => {
 }
 
 export const exercicio1Post = (req, res) => {
-    const num1 = parseInt(req.body.num1);
-    const num2 = parseInt(req.body.num2);
+    const num1 = parseFloat(req.body.num1);
+    const num2 = parseFloat(req.body.num2);
 
     res.status(200).send(num1 + "+" + num2 + "=" + (num1 + num2))
 }
